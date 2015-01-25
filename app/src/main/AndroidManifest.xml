@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kyler.tbmd2" >
+    package="com.kyler.tbmd2">
 
     <supports-screens
         android:anyDensity="true"
@@ -14,15 +14,15 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/tbmd_logo"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:hardwareAccelerated="true"
         android:launchMode="singleTop"
-        android:theme="@style/TBMD.Theme" >
+        android:theme="@style/TBMD.Theme">
         <activity
             android:name=".ToolbarMenudrawer"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -56,14 +56,12 @@
             android:name="com.kyler.tbmd2.activities.WebViewTBMD"
             android:label="@string/blank_text"
             android:launchMode="singleTask"
-            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer">
-        </activity>
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
         <activity
             android:name="com.kyler.tstb.TimeSensitiveToolbar"
             android:label="@string/blank_text"
             android:launchMode="singleTask"
-            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer">
-        </activity>
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
     </application>
 
 </manifest>

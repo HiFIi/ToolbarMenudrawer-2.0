@@ -22,14 +22,13 @@ import android.preference.PreferenceManager;
 import android.text.format.DateUtils;
 
 import com.kyler.tbmd2.Config;
+import com.kyler.tbmd2.R;
+import com.kyler.tbmd2.utils.UIUtils;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.TimeZone;
-
-import com.kyler.tbmd2.R;
-import com.kyler.tbmd2.utils.UIUtils;
 
 public class TimeUtils {
     /**

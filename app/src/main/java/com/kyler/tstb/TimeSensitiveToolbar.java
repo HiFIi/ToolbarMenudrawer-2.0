@@ -22,7 +22,9 @@ import com.kyler.tbmd2.ToolbarMenudrawer;
 import java.util.Calendar;
 
 public class TimeSensitiveToolbar extends ToolbarMenudrawer {
-   private static Toolbar mToolbar;
+    private static final int toolBarColorChangeDuration = 6000;
+    private static final int statusBarColorChangeDuration = 3000;
+    private static Toolbar mToolbar;
     private static ImageView timeOfDayIV;
 
     @Override
@@ -49,20 +51,20 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void run() {
 // get the center for the clipping circle
-        int cx = (myView.getLeft() + myView.getRight()) / 2;
-        int cy = (myView.getTop() + myView.getBottom()) / 2;
+                int cx = (myView.getLeft() + myView.getRight()) / 2;
+                int cy = (myView.getTop() + myView.getBottom()) / 2;
 
 // get the final radius for the clipping circle
-        int finalRadius = Math.max(myView.getWidth(), myView.getHeight());
+                int finalRadius = Math.max(myView.getWidth(), myView.getHeight());
 
 // create the animator for this view (the start radius is zero)
-        Animator anim =
-                ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
 
 // make the view visible and start the animation
-        myView.setVisibility(View.VISIBLE);
-        anim.setDuration(2000);
-        anim.start();
+                myView.setVisibility(View.VISIBLE);
+                anim.setDuration(2000);
+                anim.start();
 
             }
         }, 5000);
@@ -99,16 +101,16 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setMidnight() {
-        Integer colorFrom = getResources().getColor(android.R.color.transparent);
-        Integer colorTo = getResources().getColor(R.color.midnight);
+        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
+        final Integer colorTo = getResources().getColor(R.color.midnight);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(6000);
+        colorAnimation.setDuration(toolBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
-                mToolbar.setBackgroundColor((Integer)animator.getAnimatedValue());
+                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
                 getWindow().setStatusBarColor((Integer) animator.getAnimatedValue());
 
             }
@@ -119,10 +121,10 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setMidnightStatusbarColor() {
-        Integer colorFrom = getResources().getColor(R.color.midnight);
-        Integer colorTo = getResources().getColor(R.color.midnight_20);
+        final Integer colorFrom = getResources().getColor(R.color.midnight);
+        final Integer colorTo = getResources().getColor(R.color.midnight_20);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(3000);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -137,17 +139,17 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setDawn() {
-        Integer colorFrom = getResources().getColor(android.R.color.transparent);
-        Integer colorTo = getResources().getColor(R.color.dawn);
+        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
+        final Integer colorTo = getResources().getColor(R.color.dawn);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(6000);
+        colorAnimation.setDuration(toolBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
-                mToolbar.setBackgroundColor((Integer)animator.getAnimatedValue());
-                getWindow().setStatusBarColor((Integer)animator.getAnimatedValue());
+                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
+                getWindow().setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
         });
@@ -156,10 +158,10 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setDawnStatusbarColor() {
-        Integer colorFrom = getResources().getColor(R.color.midnight);
-        Integer colorTo = getResources().getColor(R.color.dawn_20);
+        final Integer colorFrom = getResources().getColor(R.color.midnight);
+        final Integer colorTo = getResources().getColor(R.color.dawn_20);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(3000);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -173,20 +175,20 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setMorning() {
-        Integer colorFrom = getResources().getColor(android.R.color.transparent);
-        Integer colorTo = getResources().getColor(R.color.morning);
+        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
+        final Integer colorTo = getResources().getColor(R.color.morning);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(6000);
+        colorAnimation.setDuration(toolBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
-                mToolbar.setBackgroundColor((Integer)animator.getAnimatedValue());
+                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
                 Window window = getWindow();
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.setStatusBarColor((Integer)animator.getAnimatedValue());
+                window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
         });
@@ -195,10 +197,10 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setMorningStatusbarColor() {
-        Integer colorFrom = getResources().getColor(R.color.dawn);
-        Integer colorTo = getResources().getColor(R.color.morning_20);
+        final Integer colorFrom = getResources().getColor(R.color.dawn);
+        final Integer colorTo = getResources().getColor(R.color.morning_20);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(3000);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -215,16 +217,16 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setAfternoon() {
-        Integer colorFrom = getResources().getColor(android.R.color.transparent);
-        Integer colorTo = getResources().getColor(R.color.afternoon);
+        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
+        final Integer colorTo = getResources().getColor(R.color.afternoon);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(6000);
+        colorAnimation.setDuration(toolBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
-                mToolbar.setBackgroundColor((Integer)animator.getAnimatedValue());
+                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
                 Window window = getWindow();
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -238,10 +240,10 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setAfternoonStatusbarColor() {
-        Integer colorFrom = getResources().getColor(R.color.afternoon);
-        Integer colorTo = getResources().getColor(R.color.afternoon_20);
+        final Integer colorFrom = getResources().getColor(R.color.afternoon);
+        final Integer colorTo = getResources().getColor(R.color.afternoon_20);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(3000);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -258,16 +260,16 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setMidday() {
-        Integer colorFrom = getResources().getColor(android.R.color.transparent);
-        Integer colorTo = getResources().getColor(R.color.midday);
+        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
+        final Integer colorTo = getResources().getColor(R.color.midday);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(6000);
+        colorAnimation.setDuration(toolBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
-                mToolbar.setBackgroundColor((Integer)animator.getAnimatedValue());
+                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
                 Window window = getWindow();
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -281,10 +283,10 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setMiddayStatusbarColor() {
-        Integer colorFrom = getResources().getColor(R.color.midday);
-        Integer colorTo = getResources().getColor(R.color.midday_20);
+        final Integer colorFrom = getResources().getColor(R.color.midday);
+        final Integer colorTo = getResources().getColor(R.color.midday_20);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(3000);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -301,16 +303,16 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setEvening() {
-        Integer colorFrom = getResources().getColor(android.R.color.transparent);
-        Integer colorTo = getResources().getColor(R.color.evening);
+        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
+        final Integer colorTo = getResources().getColor(R.color.evening);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(6000);
+        colorAnimation.setDuration(toolBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
-                mToolbar.setBackgroundColor((Integer)animator.getAnimatedValue());
+                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
                 Window window = getWindow();
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -324,10 +326,10 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setEveningStatusbarColor() {
-        Integer colorFrom = getResources().getColor(R.color.evening);
-        Integer colorTo = getResources().getColor(R.color.evening_20);
+        final Integer colorFrom = getResources().getColor(R.color.evening);
+        final Integer colorTo = getResources().getColor(R.color.evening_20);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(3000);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -344,16 +346,16 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setDusk() {
-        Integer colorFrom = getResources().getColor(android.R.color.transparent);
-        Integer colorTo = getResources().getColor(R.color.dusk);
+        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
+        final Integer colorTo = getResources().getColor(R.color.dusk);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(6000);
+        colorAnimation.setDuration(toolBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
-                mToolbar.setBackgroundColor((Integer)animator.getAnimatedValue());
+                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
                 Window window = getWindow();
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -367,10 +369,10 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setDuskStatusbarColor() {
-        Integer colorFrom = getResources().getColor(R.color.dusk);
-        Integer colorTo = getResources().getColor(R.color.dusk_20);
+        final Integer colorFrom = getResources().getColor(R.color.dusk);
+        final Integer colorTo = getResources().getColor(R.color.dusk_20);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(3000);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -387,16 +389,16 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setNighttime() {
-        Integer colorFrom = getResources().getColor(android.R.color.transparent);
-        Integer colorTo = getResources().getColor(R.color.nighttime);
+        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
+        final Integer colorTo = getResources().getColor(R.color.nighttime);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(6000);
+        colorAnimation.setDuration(toolBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
-                mToolbar.setBackgroundColor((Integer)animator.getAnimatedValue());
+                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
                 Window window = getWindow();
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -410,10 +412,10 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setNighttimeStatusbarColor() {
-        Integer colorFrom = getResources().getColor(R.color.nighttime);
-        Integer colorTo = getResources().getColor(R.color.nighttime_20);
+        final Integer colorFrom = getResources().getColor(R.color.nighttime);
+        final Integer colorTo = getResources().getColor(R.color.nighttime_20);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(3000);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -429,7 +431,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         colorAnimation.start();
     }
 
-    private int darkenColor(int color) {
+    public final int darkenColor(int color) {
         float[] hsv = new float[3];
         Color.colorToHSV(color, hsv);
         hsv[2] *= 0.8f;
@@ -439,14 +441,14 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public final boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.time_sensitive_toolbar_menu, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public final boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.

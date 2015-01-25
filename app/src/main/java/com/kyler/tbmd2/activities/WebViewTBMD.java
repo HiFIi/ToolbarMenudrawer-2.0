@@ -1,9 +1,7 @@
 package com.kyler.tbmd2.activities;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -20,9 +18,9 @@ import com.kyler.tbmd2.ToolbarMenudrawer;
  * Created by Kyler on 1/24/2015.
  */
 public class WebViewTBMD extends ToolbarMenudrawer {
+    private static final String google = "https://google.com";
     private static WebView wv;
     private static ProgressBar myProgress;
-    private static final String google = "https://google.com";
 
     @Override
     protected int getSelfNavDrawerItem() {
@@ -81,7 +79,7 @@ public class WebViewTBMD extends ToolbarMenudrawer {
                 if (newProgress == 100) {
                     myProgress.setVisibility(View.GONE);
 
-                } else{
+                } else {
                     myProgress.setVisibility(View.VISIBLE);
 
                 }
@@ -96,17 +94,6 @@ public class WebViewTBMD extends ToolbarMenudrawer {
 
         webSettings.setDomStorageEnabled(true);
 
-    }
-
-    private class MyWebViewClient extends WebViewClient {
-
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-            view.loadUrl(url);
-            return true;
-        }
     }
 
     @Override
@@ -124,8 +111,20 @@ public class WebViewTBMD extends ToolbarMenudrawer {
 
             default:
 
-        };
+        }
+        ;
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class MyWebViewClient extends WebViewClient {
+
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+            view.loadUrl(url);
+            return true;
+        }
     }
 }

@@ -50,7 +50,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
     // it's a list of all possible items.
     protected static final int NAVDRAWER_ITEM_HOME = 0;
     protected static final int NAVDRAWER_ITEM_WEBVIEW = 1;
-    protected static final int NAVDRAWER_ITEM_TSTB= 2;
+    protected static final int NAVDRAWER_ITEM_TSTB = 2;
     protected static final int NAVDRAWER_ITEM_VOICE_COMMANDS = 3;
     protected static final int NAVDRAWER_ITEM_CONTACT = 4;
     protected static final int NAVDRAWER_ITEM_ABOUT = 5;
