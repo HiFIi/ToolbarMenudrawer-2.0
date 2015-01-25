@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="nav_drawer_max_width">304.0dip</dimen>
+    <dimen name="list_item_primary_action">24.0dip</dimen>
+    <dimen name="hashtag_of_the_day_height">60dp</dimen>
+</resources>

@@ -1,0 +1,63 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <!-- Main layout -->
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="45"
+            android:background="#FFF7F7F7"
+            android:fitsSystemWindows="true"
+            tools:context=".TimeSensitiveToolbar">
+
+            <ImageView
+                android:id="@+id/timeOfDayIV"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:scaleType="centerCrop" />
+
+            <com.kyler.tbmd2.ui.TBMDTextView
+                android:id="@+id/HOtDPreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="start|center_vertical"
+                android:text="Good morning!"
+                android:textColor="#FF303030"
+                android:textSize="22.0sp"
+                customfontdemo:fontName="Roboto-Light.ttf" />
+
+            <include
+                layout="@layout/toolbar_actionbar_transparent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Nav drawer -->
+    <include layout="@layout/toolbarmenudrawer" />
+
+</android.support.v4.widget.DrawerLayout>

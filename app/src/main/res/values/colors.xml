@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="main_app_color">#FF6BB9F0</color>
+    <color name="main_app_color_dark">#FF60A6D8</color>
+    <color name="main_app_color_darker">#FF406F90</color>
+
+    <color name="navdrawer_item_text_color">#FF212121</color>
+
+    <color name="black_10">#1A000000</color>
+    <color name="black_20">#33000000</color>
+
+    <color name="main_app_color_navbar_color">#FF101010</color>
+    <color name="main_app_color_dark_transparent">#E660A6D8</color>
+    <color name="dark_red_listitem_selected">#CCC62828</color>
+
+    <color name="statusbar_red">#FFF44336</color>
+    <color name="statusbar_red_alt">#FFD32F2F</color>
+    <color name="statusbar_red_alt_700">#FFA82525</color>
+    <color name="statusbar_monza">#FFCF000F</color>
+
+    <color name="navdrawer_text_color">#505050</color>
+    <color name="navdrawer_icon_tint">#888</color>
+
+    <color name="hub_banner_bg">#FF333333</color>
+    <color name="imageview_unselected_color">#FF757575</color>
+
+    <color name="theme_accent_1">@color/main_app_color_dark</color>
+    <color name="theme_accent_1_light">@color/main_app_color_dark</color>
+
+    <color name="theme_accent_2">@color/main_app_color_dark</color>
+
+    <color name="dawn_20">#FFA04000</color>
+    <color name="dawn">#FFD35400</color>
+    <color name="morning_20">#FFE67C20</color>
+    <color name="morning">#FFEB974E</color>
+    <color name="afternoon_20">#FF4788B5</color>
+    <color name="afternoon">#FF59ABE3</color>
+    <color name="daytime_20">#FF2D9FCB</color>
+    <color name="daytime">#FF52B3D9</color>
+    <color name="midday_20">#FF395F9D</color>
+    <color name="midday">#FF4B77BE</color>
+    <color name="evening_20">#FFCF5305</color>
+    <color name="evening">#FFF9690E</color>
+    <color name="dusk_20">#FFF41616</color>
+    <color name="dusk">#FFF64747</color>
+    <color name="nighttime_20">#FF4A2E52</color>
+    <color name="nighttime">#FF674172</color>
+    <color name="midnight_20">#FF3B2541</color>
+    <color name="midnight">#FF674172</color>
+
+</resources>
