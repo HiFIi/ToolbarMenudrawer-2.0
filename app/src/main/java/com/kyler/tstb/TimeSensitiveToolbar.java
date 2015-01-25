@@ -15,6 +15,7 @@ import android.view.ViewAnimationUtils;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.kyler.tbmd2.R;
 import com.kyler.tbmd2.ToolbarMenudrawer;
@@ -22,8 +23,8 @@ import com.kyler.tbmd2.ToolbarMenudrawer;
 import java.util.Calendar;
 
 public class TimeSensitiveToolbar extends ToolbarMenudrawer {
-    private static final int toolBarColorChangeDuration = 6000;
-    private static final int statusBarColorChangeDuration = 3000;
+    private static final int toolBarColorChangeDuration = 2000;
+    private static final int statusBarColorChangeDuration = 1000;
     private static Toolbar mToolbar;
     private static ImageView timeOfDayIV;
 
@@ -39,103 +40,42 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         setContentView(R.layout.time_sensitive_toolbar);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+    //    mToolbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
         timeOfDayIV = (ImageView) findViewById(R.id.timeOfDayIV);
+        timeOfDayIV.setVisibility(View.INVISIBLE);
 
-        // previously invisible view
-        final ImageView myView = (ImageView) findViewById(R.id.morningIV);
-
-        myView.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-// get the center for the clipping circle
-                int cx = (myView.getLeft() + myView.getRight()) / 2;
-                int cy = (myView.getTop() + myView.getBottom()) / 2;
-
-// get the final radius for the clipping circle
-                int finalRadius = Math.max(myView.getWidth(), myView.getHeight());
-
-// create the animator for this view (the start radius is zero)
-                Animator anim =
-                        ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
-
-// make the view visible and start the animation
-                myView.setVisibility(View.VISIBLE);
-                anim.setDuration(2000);
-                anim.start();
-
-            }
-        }, 5000);
-
-        int hour = Calendar.getInstance().get(Calendar.HOUR);
+        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
         // > greater than
         // < less than
+        // :P
 
         if (hour == 0) {
             setMidnight();
-        }
-        if (hour >= 0 && hour <= 7) {
+            Toast.makeText(this, "It's midnight", Toast.LENGTH_LONG).show();
+        } else if (hour >= 0 && hour <= 7) {
             setDawn();
-        }
-        if (hour >= 7 && hour <= 12) {
+            Toast.makeText(this, "It's dawn", Toast.LENGTH_LONG).show();
+        } else if (hour >= 7 && hour <= 12) {
             setMorning();
-        }
-        if (hour >= 12 && hour <= 3) {
+            Toast.makeText(this, "It's morning", Toast.LENGTH_LONG).show();
+        } else if (hour >= 12 && hour <= 15) {
             setAfternoon();
-        }
-        if (hour >= 3 && hour <= 5) {
+            Toast.makeText(this, "It's afternoon", Toast.LENGTH_LONG).show();
+        } else if (hour >= 15 && hour <= 17) {
             setMidday();
-        }
-        if (hour >= 5 && hour <= 7) {
+            Toast.makeText(this, "It's Midday", Toast.LENGTH_LONG).show();
+        } else if (hour >= 17 && hour <= 19) {
             setEvening();
-        }
-        if (hour >= 7 && hour <= 9) {
+            Toast.makeText(this, "It's the evening", Toast.LENGTH_LONG).show();
+        } else if (hour >= 19 && hour <= 21) {
             setDusk();
-        }
-        if (hour >= 9 && hour <= 11) {
+            Toast.makeText(this, "It's dusk", Toast.LENGTH_LONG).show();
+        } else if (hour >= 21 && hour <= 23) {
             setNighttime();
+            Toast.makeText(this, "It's nighttime", Toast.LENGTH_LONG).show();
         }
-    }
-
-    private final void setMidnight() {
-        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
-        final Integer colorTo = getResources().getColor(R.color.midnight);
-        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(toolBarColorChangeDuration);
-        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-
-            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
-                getWindow().setStatusBarColor((Integer) animator.getAnimatedValue());
-
-            }
-
-        });
-        colorAnimation.start();
-        setMidnightStatusbarColor();
-    }
-
-    private final void setMidnightStatusbarColor() {
-        final Integer colorFrom = getResources().getColor(R.color.midnight);
-        final Integer colorTo = getResources().getColor(R.color.midnight_20);
-        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
-        colorAnimation.setDuration(statusBarColorChangeDuration);
-        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-
-            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                getWindow().setStatusBarColor((Integer) animator.getAnimatedValue());
-
-            }
-
-        });
-        colorAnimation.start();
     }
 
     private final void setDawn() {
@@ -172,6 +112,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
         });
         colorAnimation.start();
+        setAddDawnIV();
     }
 
     private final void setMorning() {
@@ -185,10 +126,6 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
-                Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
         });
@@ -214,6 +151,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
         });
         colorAnimation.start();
+        setAddMorningIV();
     }
 
     private final void setAfternoon() {
@@ -227,11 +165,6 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
-                Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.setStatusBarColor((Integer) animator.getAnimatedValue());
-                window.setStatusBarColor(darkenColor(R.color.morning));
             }
 
         });
@@ -257,6 +190,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
         });
         colorAnimation.start();
+        setAddAfternoonIV();
     }
 
     private final void setMidday() {
@@ -270,11 +204,6 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
-                Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.setStatusBarColor((Integer) animator.getAnimatedValue());
-                window.setStatusBarColor(darkenColor(R.color.morning));
             }
 
         });
@@ -293,13 +222,14 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+           /*   window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); */
                 window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
         });
         colorAnimation.start();
+        setAddMiddayIV();
     }
 
     private final void setEvening() {
@@ -313,11 +243,6 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
-                Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.setStatusBarColor((Integer) animator.getAnimatedValue());
-                window.setStatusBarColor(darkenColor(R.color.morning));
             }
 
         });
@@ -336,13 +261,14 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.setStatusBarColor((Integer) animator.getAnimatedValue());
+           /*   window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); */
+               window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
         });
         colorAnimation.start();
+        setAddEveningIV();
     }
 
     private final void setDusk() {
@@ -356,11 +282,6 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
-                Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.setStatusBarColor((Integer) animator.getAnimatedValue());
-                window.setStatusBarColor(darkenColor(R.color.morning));
             }
 
         });
@@ -379,13 +300,14 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+           /*   window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); */
                 window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
         });
         colorAnimation.start();
+        setAddDuskIV();
     }
 
     private final void setNighttime() {
@@ -399,11 +321,6 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
-                Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.setStatusBarColor((Integer) animator.getAnimatedValue());
-                window.setStatusBarColor(darkenColor(R.color.morning));
             }
 
         });
@@ -429,6 +346,270 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
         });
         colorAnimation.start();
+        setAddNighttimeIV();
+    }
+
+    private final void setMidnight() {
+        final Integer colorFrom = getResources().getColor(android.R.color.transparent);
+        final Integer colorTo = getResources().getColor(R.color.midnight);
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        colorAnimation.setDuration(toolBarColorChangeDuration);
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
+
+            }
+
+        });
+        colorAnimation.start();
+        setMidnightStatusbarColor();
+    }
+
+    private final void setMidnightStatusbarColor() {
+        final Integer colorFrom = getResources().getColor(R.color.midnight);
+        final Integer colorTo = getResources().getColor(R.color.midnight_20);
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                getWindow().setStatusBarColor((Integer) animator.getAnimatedValue());
+
+            }
+
+        });
+        colorAnimation.start();
+        setAddMidnightIV();
+    }
+
+    private final void setAddDawnIV() {
+        timeOfDayIV.setImageDrawable(getResources().getDrawable(R.drawable.dawn));
+        timeOfDayIV.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+                // get the center for the clipping circle
+                final int cx = (timeOfDayIV.getLeft() + timeOfDayIV.getRight()) / 2;
+                final int cy = (timeOfDayIV.getTop() + timeOfDayIV.getBottom()) / 2;
+
+                // get the final radius for the clipping circle
+                final int finalRadius = Math.max(timeOfDayIV.getWidth(), timeOfDayIV.getHeight());
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(timeOfDayIV, cx, cy, 0, finalRadius);
+
+                // make the view visible and start the animation
+                timeOfDayIV.setVisibility(View.VISIBLE);
+                anim.setDuration(2000);
+                anim.start();
+
+            }
+        }, 5000);
+
+    }
+
+    private final void setAddMorningIV() {
+        timeOfDayIV.setImageDrawable(getResources().getDrawable(R.drawable.morning));
+        timeOfDayIV.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+                // get the center for the clipping circle
+                final int cx = (timeOfDayIV.getLeft() + timeOfDayIV.getRight()) / 2;
+                final int cy = (timeOfDayIV.getTop() + timeOfDayIV.getBottom()) / 2;
+
+                // get the final radius for the clipping circle
+                final int finalRadius = Math.max(timeOfDayIV.getWidth(), timeOfDayIV.getHeight());
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(timeOfDayIV, cx, cy, 0, finalRadius);
+
+                // make the view visible and start the animation
+                timeOfDayIV.setVisibility(View.VISIBLE);
+                anim.setDuration(2000);
+                anim.start();
+
+            }
+        }, 5000);
+
+    }
+
+    private final void setAddAfternoonIV() {
+        timeOfDayIV.setImageDrawable(getResources().getDrawable(R.drawable.afternoon));
+        timeOfDayIV.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+                // get the center for the clipping circle
+                final int cx = (timeOfDayIV.getLeft() + timeOfDayIV.getRight()) / 2;
+                final int cy = (timeOfDayIV.getTop() + timeOfDayIV.getBottom()) / 2;
+
+                // get the final radius for the clipping circle
+                final int finalRadius = Math.max(timeOfDayIV.getWidth(), timeOfDayIV.getHeight());
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(timeOfDayIV, cx, cy, 0, finalRadius);
+
+                // make the view visible and start the animation
+                timeOfDayIV.setVisibility(View.VISIBLE);
+                anim.setDuration(2000);
+                anim.start();
+
+            }
+        }, 5000);
+
+    }
+
+    private final void setAddMiddayIV() {
+        timeOfDayIV.setImageDrawable(getResources().getDrawable(R.drawable.midday));
+        timeOfDayIV.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+                // get the center for the clipping circle
+                final int cx = (timeOfDayIV.getLeft() + timeOfDayIV.getRight()) / 2;
+                final int cy = (timeOfDayIV.getTop() + timeOfDayIV.getBottom()) / 2;
+
+                // get the final radius for the clipping circle
+                final int finalRadius = Math.max(timeOfDayIV.getWidth(), timeOfDayIV.getHeight());
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(timeOfDayIV, cx, cy, 0, finalRadius);
+
+                // make the view visible and start the animation
+                timeOfDayIV.setVisibility(View.VISIBLE);
+                anim.setDuration(2000);
+                anim.start();
+
+            }
+        }, 5000);
+
+    }
+
+    private final void setAddEveningIV() {
+        timeOfDayIV.setImageDrawable(getResources().getDrawable(R.drawable.evening));
+        timeOfDayIV.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+                // get the center for the clipping circle
+                final int cx = (timeOfDayIV.getLeft() + timeOfDayIV.getRight()) / 2;
+                final int cy = (timeOfDayIV.getTop() + timeOfDayIV.getBottom()) / 2;
+
+                // get the final radius for the clipping circle
+                final int finalRadius = Math.max(timeOfDayIV.getWidth(), timeOfDayIV.getHeight());
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(timeOfDayIV, cx, cy, 0, finalRadius);
+
+                // make the view visible and start the animation
+                timeOfDayIV.setVisibility(View.VISIBLE);
+                anim.setDuration(2000);
+                anim.start();
+
+            }
+        }, 5000);
+
+    }
+
+
+    private final void setAddDuskIV() {
+        timeOfDayIV.setImageDrawable(getResources().getDrawable(R.drawable.dusk));
+        timeOfDayIV.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+                // get the center for the clipping circle
+                final int cx = (timeOfDayIV.getLeft() + timeOfDayIV.getRight()) / 2;
+                final int cy = (timeOfDayIV.getTop() + timeOfDayIV.getBottom()) / 2;
+
+                // get the final radius for the clipping circle
+                final int finalRadius = Math.max(timeOfDayIV.getWidth(), timeOfDayIV.getHeight());
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(timeOfDayIV, cx, cy, 0, finalRadius);
+
+                // make the view visible and start the animation
+                timeOfDayIV.setVisibility(View.VISIBLE);
+                anim.setDuration(2000);
+                anim.start();
+
+            }
+        }, 5000);
+
+    }
+
+    private final void setAddNighttimeIV() {
+        timeOfDayIV.setImageDrawable(getResources().getDrawable(R.drawable.nighttime));
+        timeOfDayIV.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+                // get the center for the clipping circle
+                final int cx = (timeOfDayIV.getLeft() + timeOfDayIV.getRight()) / 2;
+                final int cy = (timeOfDayIV.getTop() + timeOfDayIV.getBottom()) / 2;
+
+                // get the final radius for the clipping circle
+                final int finalRadius = Math.max(timeOfDayIV.getWidth(), timeOfDayIV.getHeight());
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(timeOfDayIV, cx, cy, 0, finalRadius);
+
+                // make the view visible and start the animation
+                timeOfDayIV.setVisibility(View.VISIBLE);
+                anim.setDuration(2000);
+                anim.start();
+
+            }
+        }, 5000);
+
+    }
+
+    private final void setAddMidnightIV() {
+        timeOfDayIV.setImageDrawable(getResources().getDrawable(R.drawable.midnight));
+        timeOfDayIV.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+                // get the center for the clipping circle
+                final int cx = (timeOfDayIV.getLeft() + timeOfDayIV.getRight()) / 2;
+                final int cy = (timeOfDayIV.getTop() + timeOfDayIV.getBottom()) / 2;
+
+                // get the final radius for the clipping circle
+                final int finalRadius = Math.max(timeOfDayIV.getWidth(), timeOfDayIV.getHeight());
+
+                // create the animator for this view (the start radius is zero)
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(timeOfDayIV, cx, cy, 0, finalRadius);
+
+                // make the view visible and start the animation
+                timeOfDayIV.setVisibility(View.VISIBLE);
+                anim.setDuration(2000);
+                anim.start();
+
+            }
+        }, 5000);
+
     }
 
     public final int darkenColor(int color) {

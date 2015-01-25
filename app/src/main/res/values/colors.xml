@@ -5,6 +5,9 @@
     <color name="main_app_color_dark">#FF60A6D8</color>
     <color name="main_app_color_darker">#FF406F90</color>
 
+    <!-- This color allows the title in Recents (API21+) to be white. -->
+    <color name="app_color_recents_white_text">#FF607ED8</color>
+
     <color name="navdrawer_item_text_color">#FF212121</color>
 
     <color name="black_10">#1A000000</color>
@@ -40,13 +43,15 @@
     <color name="daytime">#FF52B3D9</color>
     <color name="midday_20">#FF395F9D</color>
     <color name="midday">#FF4B77BE</color>
-    <color name="evening_20">#FFCF5305</color>
-    <color name="evening">#FFF9690E</color>
+    <color name="evening_20">#FFBF392B</color>
+    <color name="evening">#FFEF4836</color>
     <color name="dusk_20">#FFF41616</color>
     <color name="dusk">#FFF64747</color>
     <color name="nighttime_20">#FF4A2E52</color>
     <color name="nighttime">#FF674172</color>
     <color name="midnight_20">#FF3B2541</color>
     <color name="midnight">#FF674172</color>
+
+    <color name="tstb_default_toolbar_color">#FF707070</color>
 
 </resources>

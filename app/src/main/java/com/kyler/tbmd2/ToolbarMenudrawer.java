@@ -5,12 +5,18 @@ import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -38,6 +44,7 @@ import com.kyler.tbmd2.activities.Home;
 import com.kyler.tbmd2.activities.WebViewTBMD;
 import com.kyler.tbmd2.ui.TBMDTextView;
 import com.kyler.tbmd2.utils.LUtils;
+import com.kyler.tbmd2.utils.RecentTasksStyler;
 import com.kyler.tbmd2.utils.UIUtils;
 import com.kyler.tstb.TimeSensitiveToolbar;
 
@@ -133,6 +140,8 @@ public class ToolbarMenudrawer extends ActionBarActivity {
     // when you scroll down a list, and reappear quickly when you scroll up).
     private ArrayList<View> mHideableHeaderViews = new ArrayList<View>();
 
+    private static Bitmap sIcon = null;
+
     // What nav drawer item should be selected?
     private int selfItem = getSelfNavDrawerItem();
 
@@ -200,7 +209,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
         }
 
         mHandler = new Handler();
-        //    RecentTasksStyler.styleRecentTasksEntry(this);
+        RecentTasksStyler.styleRecentTasksEntry(this);
         mThemedStatusBarColor = getResources().getColor(R.color.main_app_color);
         mNormalStatusBarColor = mThemedStatusBarColor;
 

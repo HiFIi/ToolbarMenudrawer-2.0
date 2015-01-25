@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 
 import com.kyler.tbmd2.R;
@@ -42,11 +43,11 @@ public class RecentTasksStyler {
 
         Resources resources = activity.getResources();
         String label = resources.getString(activity.getApplicationInfo().labelRes);
-        int colorPrimaryDark = resources.getColor(R.color.main_app_color_dark);
+        final int colorPrimaryDark = resources.getColor(R.color.app_color_recents_white_text);
 
         if (sIcon == null) {
             // Cache to avoid decoding the same bitmap on every Activity change
-            //    sIcon = BitmapFactory.decodeResource(resources, R.drawable.ic_blur_circular);
+               sIcon = BitmapFactory.decodeResource(resources, R.drawable.tbmd_recents);
         }
 
         activity.setTaskDescription(new ActivityManager.TaskDescription(label, sIcon, colorPrimaryDark));

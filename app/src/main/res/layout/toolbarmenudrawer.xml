@@ -55,7 +55,7 @@
                 android:baselineAlignBottom="true"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/banner_two" />
+                android:src="@drawable/tbmd_banner" />
 
         </FrameLayout>
 
