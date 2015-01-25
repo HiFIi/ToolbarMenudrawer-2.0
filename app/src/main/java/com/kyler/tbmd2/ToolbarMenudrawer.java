@@ -40,7 +40,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView;
+import com.kyler.tbmd2.activities.BugReport;
 import com.kyler.tbmd2.activities.Home;
+import com.kyler.tbmd2.activities.Request;
 import com.kyler.tbmd2.activities.WebViewTBMD;
 import com.kyler.tbmd2.ui.TBMDTextView;
 import com.kyler.tbmd2.utils.LUtils;
@@ -401,6 +403,20 @@ public class ToolbarMenudrawer extends ActionBarActivity {
 
             case NAVDRAWER_ITEM_TSTB:
                 intent = new Intent(this, TimeSensitiveToolbar.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+                break;
+
+            case NAVDRAWER_ITEM_BUG_REPORT:
+                intent = new Intent(this, BugReport.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+                break;
+
+            case NAVDRAWER_ITEM_REQUEST:
+                intent = new Intent(this, Request.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 finish();

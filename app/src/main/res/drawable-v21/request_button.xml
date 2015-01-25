@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/green_700">
+    <item android:drawable="@color/green_500" />
+
+    <ripple android:color="@color/green_500">
+        <item android:drawable="@drawable/request_button_pressed" />
+    </ripple>
+</ripple>

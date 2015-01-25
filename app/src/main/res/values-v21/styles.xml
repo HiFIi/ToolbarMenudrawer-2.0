@@ -15,4 +15,34 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="Theme.BugReport" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">#1A000000</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:colorPrimary">@color/md_red_500</item>
+        <item name="android:colorPrimaryDark">@color/md_red_700</item>
+        <item name="android:colorAccent">@color/md_red_500</item>
+        <item name="android:navigationBarColor">@color/md_red_700</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="Theme.Request" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">#1A000000</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:colorPrimary">@color/green_500</item>
+        <item name="android:colorPrimaryDark">@color/green_700</item>
+        <item name="android:colorAccent">@color/green_500</item>
+        <item name="android:navigationBarColor">@color/green_700</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
 </resources>    

@@ -62,6 +62,20 @@
             android:label="@string/blank_text"
             android:launchMode="singleTask"
             android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
+        <activity
+            android:name="com.kyler.tbmd2.activities.Request"
+            android:label="@string/blank_text"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Request"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
+        <activity
+            android:name="com.kyler.tbmd2.activities.BugReport"
+            android:label="@string/blank_text"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.BugReport"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
     </application>
 
 </manifest>

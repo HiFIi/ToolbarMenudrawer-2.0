@@ -29,4 +29,15 @@
     <!-- Shown as the title of the user's schedule for yesterday -->
     <string name="day_title_yesterday">Yesterday</string>
 
+    <string name="my_name_demo">My Name</string>
+    <string name="my_email_demo">myname@example.com</string>
+    <string name="recipient">Recipient</string>
+    <string name="message_body">Message body</string>
+    <string name="subject">Subject</string>
+    <string name="send">Send</string>
+    <string name="my_email">MBQSniper@hotmail.com</string>
+    <string name="feature_request">Feature Request</string>
+    <string name="recipient_bold">Recipient:</string>
+    <string name="bold_subject">Subject:</string>
+
 </resources>
