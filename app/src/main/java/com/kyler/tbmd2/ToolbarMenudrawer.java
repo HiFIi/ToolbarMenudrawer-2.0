@@ -5,18 +5,13 @@ import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -113,6 +108,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
     };
 
     private static final String appNameFolder = "/ThemeTemplate";
+    private static Bitmap sIcon = null;
     public TBMDTextView tv;
     public Toolbar mToolbar;
     // variables that control the Action Bar auto hide behavior (aka "quick recall")
@@ -141,9 +137,6 @@ public class ToolbarMenudrawer extends ActionBarActivity {
     // to implement the "quick recall" effect (the Action Bar and the header views disappear
     // when you scroll down a list, and reappear quickly when you scroll up).
     private ArrayList<View> mHideableHeaderViews = new ArrayList<View>();
-
-    private static Bitmap sIcon = null;
-
     // What nav drawer item should be selected?
     private int selfItem = getSelfNavDrawerItem();
 

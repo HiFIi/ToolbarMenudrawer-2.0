@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/rl"
+            android:id="@+id/rl_tstb"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="45"
@@ -36,22 +36,17 @@
                 android:scaleType="centerCrop" />
 
             <com.kyler.tbmd2.ui.TBMDTextView
-                android:id="@+id/HOtDPreText"
+                android:id="@+id/timeOfDayText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:gravity="start|center_vertical"
-                android:text="Good morning!"
                 android:textColor="#FF303030"
                 android:textSize="22.0sp"
                 customfontdemo:fontName="Roboto-Light.ttf" />
 
-            <include
-                layout="@layout/toolbar_actionbar_transparent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true" />
+            <include layout="@layout/toolbar_actionbar_transparent" />
 
 
         </RelativeLayout>

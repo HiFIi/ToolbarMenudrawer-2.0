@@ -14,19 +14,24 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import com.kyler.tbmd2.R;
 import com.kyler.tbmd2.ToolbarMenudrawer;
+import com.kyler.tbmd2.ui.TBMDTextView;
 
 import java.util.Calendar;
 
 public class TimeSensitiveToolbar extends ToolbarMenudrawer {
+    protected static final AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
     private static final int toolBarColorChangeDuration = 2000;
     private static final int statusBarColorChangeDuration = 1000;
     private static Toolbar mToolbar;
     private static ImageView timeOfDayIV;
+    private static TBMDTextView timeOfDayText;
+    private static RelativeLayout rl;
 
     @Override
     protected int getSelfNavDrawerItem() {
@@ -40,10 +45,14 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         setContentView(R.layout.time_sensitive_toolbar);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-    //    mToolbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        //    mToolbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
         timeOfDayIV = (ImageView) findViewById(R.id.timeOfDayIV);
         timeOfDayIV.setVisibility(View.INVISIBLE);
+
+        timeOfDayText = (TBMDTextView) findViewById(R.id.timeOfDayText);
+
+        rl = (RelativeLayout) findViewById(R.id.rl_tstb);
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
@@ -53,28 +62,20 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
         if (hour == 0) {
             setMidnight();
-            Toast.makeText(this, "It's midnight", Toast.LENGTH_LONG).show();
         } else if (hour >= 0 && hour <= 7) {
             setDawn();
-            Toast.makeText(this, "It's dawn", Toast.LENGTH_LONG).show();
         } else if (hour >= 7 && hour <= 12) {
             setMorning();
-            Toast.makeText(this, "It's morning", Toast.LENGTH_LONG).show();
         } else if (hour >= 12 && hour <= 15) {
             setAfternoon();
-            Toast.makeText(this, "It's afternoon", Toast.LENGTH_LONG).show();
         } else if (hour >= 15 && hour <= 17) {
             setMidday();
-            Toast.makeText(this, "It's Midday", Toast.LENGTH_LONG).show();
         } else if (hour >= 17 && hour <= 19) {
             setEvening();
-            Toast.makeText(this, "It's the evening", Toast.LENGTH_LONG).show();
         } else if (hour >= 19 && hour <= 21) {
             setDusk();
-            Toast.makeText(this, "It's dusk", Toast.LENGTH_LONG).show();
         } else if (hour >= 21 && hour <= 23) {
             setNighttime();
-            Toast.makeText(this, "It's nighttime", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -95,6 +96,12 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         });
         colorAnimation.start();
         setDawnStatusbarColor();
+
+        timeOfDayText.setText(R.string.its_dawn);
+        timeOfDayText.startAnimation(fadeIn);
+
+        fadeIn.setDuration(1200);
+        fadeIn.setFillAfter(true);
     }
 
     private final void setDawnStatusbarColor() {
@@ -131,6 +138,12 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         });
         colorAnimation.start();
         setMorningStatusbarColor();
+
+        timeOfDayText.setText(R.string.its_morning);
+        timeOfDayText.startAnimation(fadeIn);
+
+        fadeIn.setDuration(1200);
+        fadeIn.setFillAfter(true);
     }
 
     private final void setMorningStatusbarColor() {
@@ -170,6 +183,12 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         });
         colorAnimation.start();
         setAfternoonStatusbarColor();
+
+        timeOfDayText.setText(R.string.its_afternoon);
+        timeOfDayText.startAnimation(fadeIn);
+
+        fadeIn.setDuration(1200);
+        fadeIn.setFillAfter(true);
     }
 
     private final void setAfternoonStatusbarColor() {
@@ -209,6 +228,12 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         });
         colorAnimation.start();
         setMiddayStatusbarColor();
+
+        timeOfDayText.setText(R.string.its_midday);
+        timeOfDayText.startAnimation(fadeIn);
+
+        fadeIn.setDuration(1200);
+        fadeIn.setFillAfter(true);
     }
 
     private final void setMiddayStatusbarColor() {
@@ -248,6 +273,12 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         });
         colorAnimation.start();
         setEveningStatusbarColor();
+
+        timeOfDayText.setText(R.string.its_evening);
+        timeOfDayText.startAnimation(fadeIn);
+
+        fadeIn.setDuration(1200);
+        fadeIn.setFillAfter(true);
     }
 
     private final void setEveningStatusbarColor() {
@@ -263,7 +294,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
                 Window window = getWindow();
            /*   window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); */
-               window.setStatusBarColor((Integer) animator.getAnimatedValue());
+                window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
         });
@@ -287,6 +318,12 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         });
         colorAnimation.start();
         setDuskStatusbarColor();
+
+        timeOfDayText.setText(R.string.its_dusk);
+        timeOfDayText.startAnimation(fadeIn);
+
+        fadeIn.setDuration(1200);
+        fadeIn.setFillAfter(true);
     }
 
     private final void setDuskStatusbarColor() {
@@ -411,7 +448,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
                 anim.start();
 
             }
-        }, 5000);
+        }, 3000);
 
     }
 
@@ -439,7 +476,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
                 anim.start();
 
             }
-        }, 5000);
+        }, 3000);
 
     }
 
@@ -467,7 +504,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
                 anim.start();
 
             }
-        }, 5000);
+        }, 3000);
 
     }
 
@@ -495,7 +532,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
                 anim.start();
 
             }
-        }, 5000);
+        }, 3000);
 
     }
 
@@ -523,7 +560,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
                 anim.start();
 
             }
-        }, 5000);
+        }, 3000);
 
     }
 
@@ -552,7 +589,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
                 anim.start();
 
             }
-        }, 5000);
+        }, 3000);
 
     }
 
@@ -580,8 +617,72 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
                 anim.start();
 
             }
-        }, 5000);
+        }, 3000);
 
+        darkenRL();
+    }
+
+    private final void darkenRL() {
+        rl.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+                final Integer colorFrom = getResources().getColor(android.R.color.white);
+                final Integer colorTo = getResources().getColor(R.color.lightish_black);
+                ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+                colorAnimation.setDuration(statusBarColorChangeDuration);
+                colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+                    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animator) {
+                        rl.setBackgroundColor((Integer) animator.getAnimatedValue());
+                    }
+
+                });
+                colorAnimation.start();
+            }
+        }, 4500);
+
+        fadeInTextView();
+    }
+
+    private final void fadeInTextView() {
+        timeOfDayText.postDelayed(new Runnable() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public final void run() {
+
+                timeOfDayText.setTextColor(getResources().getColor(android.R.color.white));
+                timeOfDayText.setText(R.string.its_nighttime);
+                timeOfDayText.startAnimation(fadeIn);
+
+                fadeIn.setDuration(1200);
+                fadeIn.setFillAfter(true);
+
+            }
+        }, 4000);
+
+        setNavBarNightColor();
+    }
+
+    private final void setNavBarNightColor() {
+        final Integer colorFrom = getResources().getColor(android.R.color.black);
+        final Integer colorTo = getResources().getColor(R.color.lightish_black_darker);
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        colorAnimation.setDuration(statusBarColorChangeDuration);
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                getWindow().setNavigationBarColor((Integer) animator.getAnimatedValue());
+            }
+
+        });
+        colorAnimation.start();
     }
 
     private final void setAddMidnightIV() {
@@ -608,7 +709,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
                 anim.start();
 
             }
-        }, 5000);
+        }, 3000);
 
     }
 

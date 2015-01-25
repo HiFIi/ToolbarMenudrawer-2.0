@@ -47,7 +47,8 @@ public class RecentTasksStyler {
 
         if (sIcon == null) {
             // Cache to avoid decoding the same bitmap on every Activity change
-               sIcon = BitmapFactory.decodeResource(resources, R.drawable.tbmd_recents);
+            //   sIcon = BitmapFactory.decodeResource(resources, R.drawable.tbmd_recents);
+            sIcon = BitmapFactory.decodeResource(resources, android.R.color.transparent);
         }
 
         activity.setTaskDescription(new ActivityManager.TaskDescription(label, sIcon, colorPrimaryDark));

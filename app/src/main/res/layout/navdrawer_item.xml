@@ -39,7 +39,7 @@
         android:id="@+id/icon"
         android:layout_width="@dimen/list_item_primary_action"
         android:layout_height="@dimen/list_item_primary_action"
-        android:layout_marginLeft="16dip"
+        android:layout_marginLeft="16dp"
         android:maxHeight="@dimen/list_item_primary_action"
         android:maxWidth="@dimen/list_item_primary_action"
         android:scaleType="centerCrop" />

@@ -18,9 +18,9 @@ import com.kyler.tbmd2.ToolbarMenudrawer;
  * Created by Kyler on 1/24/2015.
  */
 public class BugReport extends ToolbarMenudrawer {
-private EditText recipient;
-private EditText subject;
-private EditText body;
+    private EditText recipient;
+    private EditText subject;
+    private EditText body;
 
     @SuppressLint("InflateParams")
     @TargetApi(Build.VERSION_CODES.KITKAT)

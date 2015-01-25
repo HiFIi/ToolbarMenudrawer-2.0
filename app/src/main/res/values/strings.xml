@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">ToolbarMenudrawer 2.0</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <string name="blank_text"></string>
@@ -39,5 +37,16 @@
     <string name="feature_request">Feature Request</string>
     <string name="recipient_bold">Recipient:</string>
     <string name="bold_subject">Subject:</string>
+
+    <!-- Greeting messages for the various time of day. -->
+    <string name="its_dawn">It\'s Dawn.</string>
+    <string name="its_morning">Good morning!</string>
+    <string name="its_afternoon">Good afternoon!</string>
+    <string name="its_daytime">It\'s daytime.</string>
+    <string name="its_midday">It\'s the middle of the day.</string>
+    <string name="its_evening">Good evening!</string>
+    <string name="its_dusk">It\'s dusk.</string>
+    <string name="its_nighttime">It\'s night time.</string>
+    <string name="its_midnight">It\'s midnight.</string>
 
 </resources>
