@@ -15,7 +15,7 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/tbmd_logo"
+        android:icon="@drawable/tbmd_newer_purple"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:launchMode="singleTop"
@@ -39,7 +39,7 @@
 
         <activity
             android:name="com.kyler.tbmd2.activities.Home"
-            android:label="@string/home"
+            android:label="@string/app_name"
             android:launchMode="singleTask"
             android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer">
             <intent-filter>
@@ -63,6 +63,11 @@
             android:launchMode="singleTask"
             android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
         <activity
+            android:name="com.kyler.tbmd2.activities.VoiceCommands"
+            android:label="@string/blank_text"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
+        <activity
             android:name="com.kyler.tbmd2.activities.Request"
             android:label="@string/blank_text"
             android:launchMode="singleTask"
@@ -76,6 +81,17 @@
             android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"
             android:theme="@style/Theme.BugReport"
             android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+        android:name="com.kyler.tbmd2.activities.About"
+        android:label="@string/blank_text"
+        android:launchMode="singleTask"
+        android:theme="@style/Theme.About"
+        android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer" ></activity>
+        <activity
+            android:name="com.kyler.tbmd2.activities.ContactAndSocial"
+            android:label="@string/blank_text"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer" ></activity>
     </application>
 
 </manifest>

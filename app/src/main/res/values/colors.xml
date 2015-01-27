@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="main_app_color">#FF6BB9F0</color>
-    <color name="main_app_color_dark">#FF60A6D8</color>
-    <color name="main_app_color_darker">#FF406F90</color>
+    <color name="main_app_color">@color/md_deep_purple_500</color>
+    <color name="main_app_color_dark">@color/md_deep_purple_700</color>
+    <color name="main_app_color_darker">@color/md_deep_purple_900</color>
 
     <!-- This color allows the title in Recents (API21+) to be white. -->
     <color name="app_color_recents_white_text">#FF607ED8</color>
 
     <color name="navdrawer_item_text_color">#FF212121</color>
+
+    <color name="about_header_bg">#FF232323</color>
+    <color name="about_header_bg_darker">#FF1C1C1C</color>
 
     <color name="black_10">#1A000000</color>
     <color name="black_15">#26000000</color>

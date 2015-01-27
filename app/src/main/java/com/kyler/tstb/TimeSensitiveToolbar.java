@@ -26,12 +26,13 @@ import java.util.Calendar;
 
 public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     protected static final AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
-    private static final int toolBarColorChangeDuration = 2000;
-    private static final int statusBarColorChangeDuration = 1000;
+    private static final int toolBarColorChangeDuration = 1500;
+    private static final int statusBarColorChangeDuration = 750;
     private static Toolbar mToolbar;
     private static ImageView timeOfDayIV;
     private static TBMDTextView timeOfDayText;
     private static RelativeLayout rl;
+    private static final int fadeInText = 800;
 
     @Override
     protected int getSelfNavDrawerItem() {
@@ -70,9 +71,9 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             setAfternoon();
         } else if (hour >= 15 && hour <= 17) {
             setMidday();
-        } else if (hour >= 17 && hour <= 19) {
+        } else if (hour >= 17 && hour <= 18) {
             setEvening();
-        } else if (hour >= 19 && hour <= 21) {
+        } else if (hour >= 18 && hour <= 21) {
             setDusk();
         } else if (hour >= 21 && hour <= 23) {
             setNighttime();
@@ -100,7 +101,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         timeOfDayText.setText(R.string.its_dawn);
         timeOfDayText.startAnimation(fadeIn);
 
-        fadeIn.setDuration(1200);
+        fadeIn.setDuration(fadeInText);
         fadeIn.setFillAfter(true);
     }
 
@@ -142,7 +143,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         timeOfDayText.setText(R.string.its_morning);
         timeOfDayText.startAnimation(fadeIn);
 
-        fadeIn.setDuration(1200);
+        fadeIn.setDuration(fadeInText);
         fadeIn.setFillAfter(true);
     }
 
@@ -187,7 +188,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         timeOfDayText.setText(R.string.its_afternoon);
         timeOfDayText.startAnimation(fadeIn);
 
-        fadeIn.setDuration(1200);
+        fadeIn.setDuration(fadeInText);
         fadeIn.setFillAfter(true);
     }
 
@@ -232,7 +233,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         timeOfDayText.setText(R.string.its_midday);
         timeOfDayText.startAnimation(fadeIn);
 
-        fadeIn.setDuration(1200);
+        fadeIn.setDuration(fadeInText);
         fadeIn.setFillAfter(true);
     }
 
@@ -277,7 +278,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
         timeOfDayText.setText(R.string.its_evening);
         timeOfDayText.startAnimation(fadeIn);
 
-        fadeIn.setDuration(1200);
+        fadeIn.setDuration(fadeInText);
         fadeIn.setFillAfter(true);
     }
 

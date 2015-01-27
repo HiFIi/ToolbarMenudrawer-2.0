@@ -35,9 +35,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView;
+import com.kyler.tbmd2.activities.About;
 import com.kyler.tbmd2.activities.BugReport;
+import com.kyler.tbmd2.activities.ContactAndSocial;
 import com.kyler.tbmd2.activities.Home;
 import com.kyler.tbmd2.activities.Request;
+import com.kyler.tbmd2.activities.VoiceCommands;
 import com.kyler.tbmd2.activities.WebViewTBMD;
 import com.kyler.tbmd2.ui.TBMDTextView;
 import com.kyler.tbmd2.utils.LUtils;
@@ -401,6 +404,27 @@ public class ToolbarMenudrawer extends ActionBarActivity {
                 finish();
                 break;
 
+            case NAVDRAWER_ITEM_VOICE_COMMANDS:
+                intent = new Intent(this, VoiceCommands.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+                break;
+
+            case NAVDRAWER_ITEM_CONTACT:
+                intent = new Intent(this, ContactAndSocial.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+                break;
+
+            case NAVDRAWER_ITEM_ABOUT:
+                intent = new Intent(this, About.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+                break;
+
             case NAVDRAWER_ITEM_BUG_REPORT:
                 intent = new Intent(this, BugReport.class);
                 startActivity(intent);
@@ -700,7 +724,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
                 (mDrawerLayout != null) ? "statusBarBackgroundColor" : "statusBarColor",
                 shown ? Color.BLACK : mNormalStatusBarColor,
                 shown ? mNormalStatusBarColor : Color.BLACK)
-                .setDuration(200);
+                .setDuration(300);
         if (mDrawerLayout != null) {
             mStatusBarColorAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
