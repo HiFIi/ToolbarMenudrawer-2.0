@@ -23,9 +23,9 @@ public class About extends ToolbarMenudrawer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
 
-    //    headerView = findViewById(R.id.about_header);
+        //    headerView = findViewById(R.id.about_header);
 
-    //    animateColorChanges();
+        //    animateColorChanges();
 
     }
 

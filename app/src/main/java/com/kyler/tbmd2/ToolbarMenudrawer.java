@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -37,12 +36,11 @@ import android.widget.TextView;
 import com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView;
 import com.kyler.tbmd2.activities.About;
 import com.kyler.tbmd2.activities.BugReport;
-import com.kyler.tbmd2.activities.ContactAndSocial;
 import com.kyler.tbmd2.activities.Home;
+import com.kyler.tbmd2.activities.Palette;
 import com.kyler.tbmd2.activities.Request;
 import com.kyler.tbmd2.activities.VoiceCommands;
 import com.kyler.tbmd2.activities.WebViewTBMD;
-import com.kyler.tbmd2.ui.TBMDTextView;
 import com.kyler.tbmd2.utils.LUtils;
 import com.kyler.tbmd2.utils.RecentTasksStyler;
 import com.kyler.tbmd2.utils.UIUtils;
@@ -59,7 +57,8 @@ public class ToolbarMenudrawer extends ActionBarActivity {
     protected static final int NAVDRAWER_ITEM_WEBVIEW = 1;
     protected static final int NAVDRAWER_ITEM_TSTB = 2;
     protected static final int NAVDRAWER_ITEM_VOICE_COMMANDS = 3;
-    protected static final int NAVDRAWER_ITEM_CONTACT = 4;
+    protected static final int NAVDRAWER_ITEM_PALETTE = 4;
+
     protected static final int NAVDRAWER_ITEM_ABOUT = 5;
     protected static final int NAVDRAWER_ITEM_BUG_REPORT = 6;
     protected static final int NAVDRAWER_ITEM_REQUEST = 7;
@@ -91,7 +90,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
             R.string.webview,
             R.string.tstb,
             R.string.voice_commands,
-            R.string.contact,
+            R.string.palette,
             R.string.about,
             R.string.bug_report,
             R.string.request
@@ -104,15 +103,12 @@ public class ToolbarMenudrawer extends ActionBarActivity {
             R.drawable.ic_webview,
             R.drawable.ic_tstb,
             R.drawable.ic_voice_commands,
-            0,
+            R.drawable.palette,
             0,
             0,
             0
     };
 
-    private static final String appNameFolder = "/ThemeTemplate";
-    private static Bitmap sIcon = null;
-    public TBMDTextView tv;
     public Toolbar mToolbar;
     // variables that control the Action Bar auto hide behavior (aka "quick recall")
     private int mActionBarAutoHideSensivity = 0;
@@ -411,8 +407,8 @@ public class ToolbarMenudrawer extends ActionBarActivity {
                 finish();
                 break;
 
-            case NAVDRAWER_ITEM_CONTACT:
-                intent = new Intent(this, ContactAndSocial.class);
+            case NAVDRAWER_ITEM_PALETTE:
+                intent = new Intent(this, Palette.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 finish();
@@ -486,9 +482,9 @@ public class ToolbarMenudrawer extends ActionBarActivity {
         mNavDrawerItems.add(NAVDRAWER_ITEM_WEBVIEW);
         mNavDrawerItems.add(NAVDRAWER_ITEM_TSTB);
         mNavDrawerItems.add(NAVDRAWER_ITEM_VOICE_COMMANDS);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_PALETTE);
 
         mNavDrawerItems.add(NAVDRAWER_ITEM_SEPARATOR_SPECIAL);
-        mNavDrawerItems.add(NAVDRAWER_ITEM_CONTACT);
         mNavDrawerItems.add(NAVDRAWER_ITEM_ABOUT);
         mNavDrawerItems.add(NAVDRAWER_ITEM_BUG_REPORT);
         mNavDrawerItems.add(NAVDRAWER_ITEM_REQUEST);

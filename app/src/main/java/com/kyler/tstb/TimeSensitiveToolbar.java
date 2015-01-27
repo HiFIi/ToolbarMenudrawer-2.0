@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -26,13 +25,14 @@ import java.util.Calendar;
 
 public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     protected static final AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
-    private static final int toolBarColorChangeDuration = 1500;
-    private static final int statusBarColorChangeDuration = 750;
+    protected static final int RevealDuration = 1000;
+    private static final int toolBarColorChangeDuration = 1200;
+    private static final int statusBarColorChangeDuration = 50;
+    private static final int fadeInText = 600;
     private static Toolbar mToolbar;
     private static ImageView timeOfDayIV;
     private static TBMDTextView timeOfDayText;
     private static RelativeLayout rl;
-    private static final int fadeInText = 800;
 
     @Override
     protected int getSelfNavDrawerItem() {
@@ -445,7 +445,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
                 // make the view visible and start the animation
                 timeOfDayIV.setVisibility(View.VISIBLE);
-                anim.setDuration(2000);
+                anim.setDuration(RevealDuration);
                 anim.start();
 
             }
@@ -473,7 +473,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
                 // make the view visible and start the animation
                 timeOfDayIV.setVisibility(View.VISIBLE);
-                anim.setDuration(2000);
+                anim.setDuration(RevealDuration);
                 anim.start();
 
             }
@@ -501,7 +501,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
                 // make the view visible and start the animation
                 timeOfDayIV.setVisibility(View.VISIBLE);
-                anim.setDuration(2000);
+                anim.setDuration(RevealDuration);
                 anim.start();
 
             }
@@ -529,7 +529,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
                 // make the view visible and start the animation
                 timeOfDayIV.setVisibility(View.VISIBLE);
-                anim.setDuration(2000);
+                anim.setDuration(RevealDuration);
                 anim.start();
 
             }
@@ -557,7 +557,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
                 // make the view visible and start the animation
                 timeOfDayIV.setVisibility(View.VISIBLE);
-                anim.setDuration(2000);
+                anim.setDuration(RevealDuration);
                 anim.start();
 
             }
@@ -586,7 +586,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
                 // make the view visible and start the animation
                 timeOfDayIV.setVisibility(View.VISIBLE);
-                anim.setDuration(2000);
+                anim.setDuration(RevealDuration);
                 anim.start();
 
             }
@@ -614,7 +614,7 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
                 // make the view visible and start the animation
                 timeOfDayIV.setVisibility(View.VISIBLE);
-                anim.setDuration(2000);
+                anim.setDuration(RevealDuration);
                 anim.start();
 
             }
@@ -706,21 +706,12 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
                 // make the view visible and start the animation
                 timeOfDayIV.setVisibility(View.VISIBLE);
-                anim.setDuration(2000);
+                anim.setDuration(RevealDuration);
                 anim.start();
 
             }
         }, 3000);
 
-    }
-
-    public final int darkenColor(int color) {
-        float[] hsv = new float[3];
-        Color.colorToHSV(color, hsv);
-        hsv[2] *= 0.8f;
-        return Color.HSVToColor(hsv);
-
-        // Credits for this: https://github.com/Musenkishi/wally
     }
 
     @Override

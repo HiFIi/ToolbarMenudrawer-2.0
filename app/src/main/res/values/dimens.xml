@@ -1,6 +1,10 @@
 <resources>
-    <dimen name="nav_drawer_max_width">304.0dip</dimen>
+    <dimen name="nav_drawer_max_width">320.0dip</dimen>
     <dimen name="list_item_primary_action">24.0dip</dimen>
-    <dimen name="hashtag_of_the_day_height">60dp</dimen>
     <dimen name="about_header_bg_height">150dp</dimen>
+
+    <!-- Thanks Google. I decompiled some of your apps JUST to make sure I got the right paddings/margins/dimensions -->
+    <dimen name="play_drawer_item_left_padding">16.0dip</dimen>
+    <dimen name="play_drawer_item_right_padding">16.0dip</dimen>
+
 </resources>

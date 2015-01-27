@@ -20,24 +20,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingBottom="4dip"
-                android:text="Click the button and start speaking"
-                android:textColor="#2b2b2b" />
-
-            <Button
-                android:id="@+id/speakButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="speakButtonClicked"
-                android:text="Click Me!" />
 
         </RelativeLayout>
     </LinearLayout>

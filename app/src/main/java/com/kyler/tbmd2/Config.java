@@ -16,10 +16,6 @@
 
 package com.kyler.tbmd2;
 
-import android.net.Uri;
-
-import com.google.samples.apps.iosched.util.ParserUtils;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
@@ -27,12 +23,7 @@ import java.util.TimeZone;
 public class Config {
     // General configuration
 
-    // Is this an internal dogfood build?
-    public static final boolean IS_DOGFOOD_BUILD = false;
-
-    // Warning messages for dogfood build
-    public static final String DOGFOOD_BUILD_WARNING_TITLE = "Test build";
-    public static final String DOGFOOD_BUILD_WARNING_TEXT = "This is a test build.";
+    public static final boolean IS_PUBLIC_BUILD = false;
 
     public static final TimeZone CONFERENCE_TIMEZONE = TimeZone.getTimeZone("America/Los_Angeles");
     // shorthand for some units of time
@@ -40,20 +31,6 @@ public class Config {
     public static final long MINUTE_MILLIS = 60 * SECOND_MILLIS;
     public static final long HOUR_MILLIS = 60 * MINUTE_MILLIS;
     public static final long DAY_MILLIS = 24 * HOUR_MILLIS;
-
-    private static String piece(String s, char start, char end) {
-        int startIndex = s.indexOf(start), endIndex = s.indexOf(end);
-        return s.substring(startIndex + 1, endIndex);
-    }
-
-    private static String piece(String s, char start) {
-        int startIndex = s.indexOf(start);
-        return s.substring(startIndex + 1);
-    }
-
-    private static String rep(String s, String orig, String replacement) {
-        return s.replaceAll(orig, replacement);
-    }
 
     // Known session tags that induce special behaviors
     public interface Tags {

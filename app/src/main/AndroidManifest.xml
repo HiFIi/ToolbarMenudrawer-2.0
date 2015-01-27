@@ -11,6 +11,7 @@
         android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -82,16 +83,21 @@
             android:theme="@style/Theme.BugReport"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
-        android:name="com.kyler.tbmd2.activities.About"
-        android:label="@string/blank_text"
-        android:launchMode="singleTask"
-        android:theme="@style/Theme.About"
-        android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer" ></activity>
+            android:name="com.kyler.tbmd2.activities.About"
+            android:label="@string/blank_text"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"
+            android:theme="@style/Theme.About"></activity>
         <activity
             android:name="com.kyler.tbmd2.activities.ContactAndSocial"
             android:label="@string/blank_text"
             android:launchMode="singleTask"
-            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer" ></activity>
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
+        <activity
+            android:name="com.kyler.tbmd2.activities.Palette"
+            android:label="@string/blank_text"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
     </application>
 
 </manifest>
