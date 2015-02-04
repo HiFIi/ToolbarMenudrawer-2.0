@@ -89,14 +89,10 @@
             android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"
             android:theme="@style/Theme.About"></activity>
         <activity
-            android:name="com.kyler.tbmd2.activities.ContactAndSocial"
+            android:name="com.kyler.tbmd2.activities.PaletteActivity"
             android:label="@string/blank_text"
             android:launchMode="singleTask"
-            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
-        <activity
-            android:name="com.kyler.tbmd2.activities.Palette"
-            android:label="@string/blank_text"
-            android:launchMode="singleTask"
+            android:theme="@style/Theme.Palette"
             android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
     </application>
 

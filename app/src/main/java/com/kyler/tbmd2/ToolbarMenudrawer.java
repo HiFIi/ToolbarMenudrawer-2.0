@@ -37,7 +37,7 @@ import com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView;
 import com.kyler.tbmd2.activities.About;
 import com.kyler.tbmd2.activities.BugReport;
 import com.kyler.tbmd2.activities.Home;
-import com.kyler.tbmd2.activities.Palette;
+import com.kyler.tbmd2.activities.PaletteActivity;
 import com.kyler.tbmd2.activities.Request;
 import com.kyler.tbmd2.activities.VoiceCommands;
 import com.kyler.tbmd2.activities.WebViewTBMD;
@@ -408,7 +408,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
                 break;
 
             case NAVDRAWER_ITEM_PALETTE:
-                intent = new Intent(this, Palette.class);
+                intent = new Intent(this, PaletteActivity.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 finish();
