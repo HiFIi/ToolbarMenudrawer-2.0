@@ -19,6 +19,7 @@ public class Home extends ToolbarMenudrawer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.home);
     }
 }

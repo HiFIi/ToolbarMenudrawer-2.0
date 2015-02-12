@@ -9,9 +9,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
-
 import android.support.v7.graphics.Palette;
+import android.view.Window;
 
 import com.kyler.tbmd2.R;
 import com.kyler.tbmd2.ToolbarMenudrawer;
@@ -35,7 +34,7 @@ public class PaletteActivity extends ToolbarMenudrawer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.palette);
 
-        drawable = (Drawable) getResources().getDrawable(R.drawable.palette_image);
+        drawable = (Drawable) getResources().getDrawable(R.drawable.palette_demo);
         bitmap = ((BitmapDrawable) drawable).getBitmap();
 
         final Handler handler = new Handler();
@@ -46,10 +45,10 @@ public class PaletteActivity extends ToolbarMenudrawer {
             }
         }, 2500);
 
-            // left, top, right, bottom
-            mToolbar.setPadding(0, mToolbarPaddingTop, 0, 0);
-            mToolbar.setNavigationIcon(R.drawable.ic_drawer_dark);
-        }
+        // left, top, right, bottom
+        mToolbar.setPadding(0, mToolbarPaddingTop, 0, 0);
+        super.mToolbar.setNavigationIcon(R.drawable.ic_drawer_dark);
+    }
 
     private void paletteExample() {
         if (BuildUtils.isL() == true) {

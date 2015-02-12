@@ -20,6 +20,7 @@ import java.util.List;
 public class VoiceCommands extends ToolbarMenudrawer {
     protected static final String test = "test";
     private static final int REQUEST_CODE = 1234;
+
     @Override
     protected int getSelfNavDrawerItem() {
         return NAVDRAWER_ITEM_VOICE_COMMANDS;

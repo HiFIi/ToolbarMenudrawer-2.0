@@ -7,13 +7,11 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -41,6 +39,7 @@ import com.kyler.tbmd2.activities.PaletteActivity;
 import com.kyler.tbmd2.activities.Request;
 import com.kyler.tbmd2.activities.VoiceCommands;
 import com.kyler.tbmd2.activities.WebViewTBMD;
+import com.kyler.tbmd2.utils.BuildUtils;
 import com.kyler.tbmd2.utils.LUtils;
 import com.kyler.tbmd2.utils.RecentTasksStyler;
 import com.kyler.tbmd2.utils.UIUtils;
@@ -68,8 +67,6 @@ public class ToolbarMenudrawer extends ActionBarActivity {
     protected static final int NAVDRAWER_ITEM_SEPARATOR = -3;
     protected static final int NAVDRAWER_ITEM_SEPARATOR_SPECIAL = -4;
 
-    private static final String TAG_FOLDERDEBUG = "ThemeTemplate";
-
     private static final int FADE_CROSSOVER_TIME_MILLIS = 300;
 
     private static final TypeEvaluator ARGB_EVALUATOR = new ArgbEvaluator();
@@ -94,7 +91,6 @@ public class ToolbarMenudrawer extends ActionBarActivity {
             R.string.about,
             R.string.bug_report,
             R.string.request
-
     };
 
     // icons for navdrawer items (indices must correspond to above array)
@@ -146,66 +142,18 @@ public class ToolbarMenudrawer extends ActionBarActivity {
 
         UIUtils.enableDisableActivitiesByFormFactor(this);
 
-        // We use the SharePreferences method to check whether or not the app has been run before.
-        // If not, open the Splashscreen.
-        SharedPreferences first = PreferenceManager
-                .getDefaultSharedPreferences(this);
-
-        if (getIntent().getBooleanExtra("EXIT", false)) {
-            super.finish();
-        }
-
-        if (!first.getBoolean("firstTime", false)) {
-
-            new Handler().post(new Runnable() {
-                @Override
-                public void run() {
-
-            /*        // Basically, we're creating a folder on the first time the app runs.
-                    // This is necessary for storing cache and miscellaneous other items.
-                    File folder = new File(Environment.getExternalStorageDirectory() + appNameFolder);
-                    boolean success = true;
-
-                    if (!folder.exists()) {
-                        success = folder.mkdir();
-
-                    } else if (folder.exists()) {
-                        Log.d(TAG_FOLDERDEBUG, "The folder already exists.");
-
-                    }
-                    if (success) {
-                        Log.d(TAG_FOLDERDEBUG, "Success!");
-
-                    } else if (!success) {
-                        Log.d(TAG_FOLDERDEBUG, "Failure! D:");
-                    }
-
-                    Intent first = new Intent(ThemeTemplate.this, Welcome.class);
-                    first.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(first);
-                    finish(); */
-
-                }
-            });
-
-
-            SharedPreferences.Editor editor = first.edit();
-
-            editor.putBoolean("firstTime", true);
-            editor.commit();
-
-        }
-
         ActionBar ab = getSupportActionBar();
 
         if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
         }
 
-        mHandler = new Handler();
-        RecentTasksStyler.styleRecentTasksEntry(this);
-        mThemedStatusBarColor = getResources().getColor(R.color.main_app_color);
-        mNormalStatusBarColor = mThemedStatusBarColor;
+        if (BuildUtils.isL()) {
+            mHandler = new Handler();
+            RecentTasksStyler.styleRecentTasksEntry(this);
+            mThemedStatusBarColor = getResources().getColor(R.color.main_app_color);
+            mNormalStatusBarColor = mThemedStatusBarColor;
+        }
 
     }
 
@@ -242,8 +190,10 @@ public class ToolbarMenudrawer extends ActionBarActivity {
             return;
         }
 
-        mDrawerLayout.setStatusBarBackgroundColor(
-                getResources().getColor(R.color.main_app_color));
+        if (BuildUtils.isL()) {
+            mDrawerLayout.setStatusBarBackgroundColor(
+                    getResources().getColor(R.color.main_app_color));
+        }
 
         ScrimInsetsScrollView navDrawer = (ScrimInsetsScrollView)
                 mDrawerLayout.findViewById(R.id.navdrawer);
@@ -573,6 +523,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
         } else {
             layoutToInflate = R.layout.navdrawer_item;
         }
+
         View view = getLayoutInflater().inflate(layoutToInflate, container, false);
 
         if (isSeparator(itemId)) {
@@ -611,7 +562,6 @@ public class ToolbarMenudrawer extends ActionBarActivity {
         if (show == mActionBarShown) {
             return;
         }
-
         mActionBarShown = show;
         onActionBarAutoShowOrHide(show);
     }

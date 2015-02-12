@@ -92,8 +92,15 @@
             android:name="com.kyler.tbmd2.activities.PaletteActivity"
             android:label="@string/blank_text"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.Palette"
-            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"
+            android:theme="@style/Theme.Palette"></activity>
+        <activity
+            android:name="com.kyler.tbmd2.activities.Bummer"
+            android:label="@string/sadface"></activity>
+        <activity
+            android:name="com.kyler.tbmd2.activities.AndroidVersionCheck"
+            android:label="@string/blank_text"
+            android:theme="@style/Theme.VersionChecker"></activity>
     </application>
 
 </manifest>

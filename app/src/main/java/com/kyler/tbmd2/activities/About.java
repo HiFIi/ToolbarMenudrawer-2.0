@@ -24,7 +24,6 @@ public class About extends ToolbarMenudrawer {
         setContentView(R.layout.about);
 
         //    headerView = findViewById(R.id.about_header);
-
         //    animateColorChanges();
 
     }

@@ -69,9 +69,9 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             setMorning();
         } else if (hour >= 12 && hour <= 15) {
             setAfternoon();
-        } else if (hour >= 15 && hour <= 17) {
+        } else if (hour >= 15 && hour <= 16) {
             setMidday();
-        } else if (hour >= 17 && hour <= 18) {
+        } else if (hour >= 16 && hour <= 18) {
             setEvening();
         } else if (hour >= 18 && hour <= 21) {
             setDusk();

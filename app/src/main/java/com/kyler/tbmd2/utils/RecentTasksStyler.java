@@ -43,7 +43,7 @@ public class RecentTasksStyler {
 
         Resources resources = activity.getResources();
         String label = resources.getString(activity.getApplicationInfo().labelRes);
-        final int colorPrimaryDark = resources.getColor(R.color.app_color_recents_white_text);
+        final int colorPrimaryDark = resources.getColor(R.color.main_app_color);
 
         if (sIcon == null) {
             // Cache to avoid decoding the same bitmap on every Activity change

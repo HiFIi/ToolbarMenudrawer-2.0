@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TBMD.Theme" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="Theme.VersionChecker" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/Theme.VersionChecker.ActionBar</item>
+        <item name="android:actionBarWidgetTheme">@style/Theme.VersionChecker.Widget</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <style name="Theme.VersionChecker.Widget" parent="@android:style/Theme.Holo.Light">
+        <item name="android:textColorHint">@color/l_statusbar_tint_workaround_widget_text_color
+        </item>
+        <item name="android:textColor">@color/l_statusbar_tint_workaround_widget_text_color</item>
+        <item name="android:background">@color/l_statusbar_tint_workaround_widget_background_color
+        </item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+    <style name="Theme.VersionChecker.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/l_statusbar_tint_workaround_actionbar_color</item>
+        <item name="android:titleTextStyle">@style/Theme.VersionChecker.ActionBar.TitleTextStyle
+        </item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:icon">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.VersionChecker.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColorHint">
+            @color/l_statusbar_tint_workaround_actionbar_titletextstyle_colorhint
+        </item>
+        <item name="android:textColor">
+            @color/l_statusbar_tint_workaround_actionbar_titletextstyle_text_color
+        </item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+
+</resources>    

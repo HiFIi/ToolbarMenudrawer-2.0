@@ -364,4 +364,30 @@
     <color name="md_blue_grey_800">#37474f</color>
     <color name="md_blue_grey_900">#263238</color>
 
+    <color name="background_material_light">#fffafafa</color>
+    <color name="l_statusbar_tint_workaround_widget_text_color">#FF101010</color>
+    <color name="l_statusbar_tint_workaround_widget_background_color">#FFE5E5E5</color>
+    <color name="l_statusbar_tint_workaround_actionbar_color">#FF3B50CE</color>
+    <color name="l_statusbar_tint_workaround_background_color_framelayout">#FF2A36B1</color>
+    <color name="l_statusbar_tint_workaround_drawer_color">#FF333435</color>
+    <color name="l_statusbar_tint_workaround_app_background">#FFE5E5E5</color>
+    <color name="l_statusbar_tint_workaround_drawer_text_color">#FFE7E8E9</color>
+    <color name="l_statusbar_tint_workaround_background_color_misc">#FF464646</color>
+
+    <!-- 55% Transparent -->
+    <color name="l_statusbar_tint_workaround_header_view_view_color">#8C343435</color>
+
+    <color name="l_statusbar_tint_workaround_drawer_cachecolorhint_color">#FF575757</color>
+
+    <!-- 80% Transparent -->
+    <color name="l_statusbar_tint_workaround_drawer_divider_color">#CC2A2A2A</color>
+
+    <!-- Hiding the ActionBar Title text -->
+    <color name="l_statusbar_tint_workaround_actionbar_titletextstyle_colorhint">
+        @android:color/transparent
+    </color>
+    <color name="l_statusbar_tint_workaround_actionbar_titletextstyle_text_color">
+        @android:color/transparent
+    </color>
+
 </resources>
