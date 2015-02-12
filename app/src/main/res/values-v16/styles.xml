@@ -7,4 +7,20 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="Theme.VersionChecker" parent="android:style/Theme.Holo.Light">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="Theme.VersionChecker.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColorHint">
+            @color/l_statusbar_tint_workaround_actionbar_titletextstyle_colorhint
+        </item>
+        <item name="android:textColor">
+            @color/l_statusbar_tint_workaround_actionbar_titletextstyle_text_color
+        </item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
 </resources>    

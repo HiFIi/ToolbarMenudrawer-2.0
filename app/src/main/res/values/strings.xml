@@ -50,5 +50,9 @@
     <string name="its_midnight">It\'s midnight.</string>
     <string name="r">[R]</string>
     <string name="sadface">:(</string>
+    <string name="welcome">Welcome!</string>
+    <string name="your_android_version">Your Android Version is:</string>
+    <string name="android_rel_lollipop">Lollipop</string>
+    <string name="android_rel_kitkat">Kitkat</string>
 
 </resources>

@@ -23,6 +23,7 @@ import java.util.TimeZone;
 public class Config {
     // General configuration
 
+    public static final boolean IS_DEV_BUILD = true;
     public static final boolean IS_PUBLIC_BUILD = false;
 
     public static final TimeZone CONFERENCE_TIMEZONE = TimeZone.getTimeZone("America/Los_Angeles");

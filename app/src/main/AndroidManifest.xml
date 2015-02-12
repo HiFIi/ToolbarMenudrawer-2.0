@@ -99,7 +99,7 @@
             android:label="@string/sadface"></activity>
         <activity
             android:name="com.kyler.tbmd2.activities.AndroidVersionCheck"
-            android:label="@string/blank_text"
+            android:label="@string/welcome"
             android:theme="@style/Theme.VersionChecker"></activity>
     </application>
 

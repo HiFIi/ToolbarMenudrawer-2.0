@@ -7,11 +7,14 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -33,6 +36,7 @@ import android.widget.TextView;
 
 import com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView;
 import com.kyler.tbmd2.activities.About;
+import com.kyler.tbmd2.activities.AndroidVersionCheck;
 import com.kyler.tbmd2.activities.BugReport;
 import com.kyler.tbmd2.activities.Home;
 import com.kyler.tbmd2.activities.PaletteActivity;
@@ -140,7 +144,38 @@ public class ToolbarMenudrawer extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        UIUtils.enableDisableActivitiesByFormFactor(this);
+        // We use the SharePreferences method to check whether or not the app has been run before.
+        // If not, open the Splashscreen.
+        SharedPreferences first = PreferenceManager
+                .getDefaultSharedPreferences(this);
+
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            super.finish();
+        }
+
+        if (!first.getBoolean("firstTime", false)) {
+
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    Intent androidVersionCheck = new Intent(ToolbarMenudrawer.this, AndroidVersionCheck.class);
+                    androidVersionCheck.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP & Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(androidVersionCheck);
+                    finish();
+                }
+            });
+
+
+            SharedPreferences.Editor editor = first.edit();
+
+            editor.putBoolean("firstTime", true);
+            editor.commit();
+
+        }
+
+        if (BuildUtils.isL()) {
+            UIUtils.enableDisableActivitiesByFormFactor(this);
+        }
 
         ActionBar ab = getSupportActionBar();
 
@@ -485,7 +520,10 @@ public class ToolbarMenudrawer extends ActionBarActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setupNavDrawer();
+
+        if (Build.VERSION.SDK_INT == 21) {
+            setupNavDrawer();
+        }
 
         View mainContent = findViewById(R.id.main_content);
         if (mainContent != null) {

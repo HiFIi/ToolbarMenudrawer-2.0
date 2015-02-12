@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.kyler.tbmd2.Config;
 import com.kyler.tbmd2.R;
 import com.kyler.tbmd2.ToolbarMenudrawer;
 
@@ -38,7 +40,7 @@ public class VoiceCommands extends ToolbarMenudrawer {
         List<ResolveInfo> activities = pm.queryIntentActivities(
                 new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
         if (activities.size() == 0) {
-            speakButton.setEnabled(false);
+            speakButton.setEnabled(true);
             speakButton.setText("Recognizer not present");
         }
     }
@@ -59,6 +61,7 @@ public class VoiceCommands extends ToolbarMenudrawer {
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Voice recognition test...");
         startActivityForResult(intent, REQUEST_CODE);
+
     }
 
     /**
@@ -70,6 +73,16 @@ public class VoiceCommands extends ToolbarMenudrawer {
             // Populate the wordsList with the String values the recognition engine thought it heard
             ArrayList<String> matches = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
+
+            if (Config.IS_DEV_BUILD && matches.contains("hello")) {
+                Toast.makeText(this, "Hi!", Toast.LENGTH_LONG).show();
+
+                /* So what we're doing above is basically checking to first see if this is a developer build
+                 * (in the config class, there is a boolean that states that it is, and we're seeing if the
+                 * word *only* contains "hello", and so if both of those end up being true, we display a Toast
+                 * saying "Hi!". Nice and simple, but you get the point. */
+
+             }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

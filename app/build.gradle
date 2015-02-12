@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.kyler.tbmd2"
         minSdkVersion 14
-        targetSdkVersion 21
+        targetSdkVersion 19
         versionCode 1
         versionName "0.0.1"
     }

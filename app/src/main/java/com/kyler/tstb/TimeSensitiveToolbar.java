@@ -27,8 +27,8 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     protected static final AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
     protected static final int RevealDuration = 1000;
     private static final int toolBarColorChangeDuration = 1200;
-    private static final int statusBarColorChangeDuration = 50;
-    private static final int fadeInText = 600;
+    private static final int statusBarColorChangeDuration = 500;
+    private static final int fadeInText = 400;
     private static Toolbar mToolbar;
     private static ImageView timeOfDayIV;
     private static TBMDTextView timeOfDayText;
@@ -81,6 +81,12 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
     }
 
     private final void setDawn() {
+        timeOfDayText.setText(R.string.its_dawn);
+        timeOfDayText.startAnimation(fadeIn);
+
+        fadeIn.setDuration(fadeInText);
+        fadeIn.setFillAfter(true);
+
         final Integer colorFrom = getResources().getColor(android.R.color.transparent);
         final Integer colorTo = getResources().getColor(R.color.dawn);
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
@@ -96,13 +102,8 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
 
         });
         colorAnimation.start();
+
         setDawnStatusbarColor();
-
-        timeOfDayText.setText(R.string.its_dawn);
-        timeOfDayText.startAnimation(fadeIn);
-
-        fadeIn.setDuration(fadeInText);
-        fadeIn.setFillAfter(true);
     }
 
     private final void setDawnStatusbarColor() {
@@ -115,7 +116,10 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
-                getWindow().setStatusBarColor((Integer) animator.getAnimatedValue());
+                Window window = getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
         });

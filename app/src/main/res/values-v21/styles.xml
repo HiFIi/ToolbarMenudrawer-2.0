@@ -3,7 +3,7 @@
 
     <style name="TBMD.Theme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@color/black_20</item>
+        <item name="android:statusBarColor">@color/black_10</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowContentTransitions">true</item>
@@ -74,6 +74,19 @@
         <item name="android:navigationBarColor">@android:color/black</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="Theme.VersionChecker" parent="android:style/Theme.Material.Light">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/material_blue_grey_950</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:colorPrimary">@color/material_blue_grey_800</item>
+        <item name="android:colorPrimaryDark">@color/material_blue_grey_950</item>
+        <item name="android:colorAccent">@color/material_blue_grey_900</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
     </style>
 
 </resources>    

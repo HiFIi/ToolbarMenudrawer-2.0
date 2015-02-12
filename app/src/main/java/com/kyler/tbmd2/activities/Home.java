@@ -21,5 +21,11 @@ public class Home extends ToolbarMenudrawer {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.home);
+
+   /*     if (Build.VERSION.SDK_INT != Build.VERSION_CODES.LOLLIPOP) {
+            Toast.makeText(this, "Awkward :(", Toast.LENGTH_LONG).show();
+        } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP) {
+            Toast.makeText(this, "Yay!", Toast.LENGTH_LONG).show();
+        } */
     }
 }
