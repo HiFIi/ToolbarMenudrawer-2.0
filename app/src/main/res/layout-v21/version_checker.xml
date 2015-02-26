@@ -18,36 +18,35 @@
             android:id="@+id/yourAndroidVersionIs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_gravity="start|left"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="145dp"
             android:gravity="center|center_vertical|center_horizontal"
             android:text="@string/your_android_version"
             android:textColor="@color/navdrawer_item_text_color"
             android:textSize="16.0sp"
-            customfontdemo:fontName="Roboto-Medium.ttf"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="145dp"
-            android:layout_marginLeft="16dp" />
+            customfontdemo:fontName="Roboto-Medium.ttf" />
 
         <com.kyler.tbmd2.ui.TBMDTextView
             android:id="@+id/androidVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_gravity="start|left"
+            android:layout_marginLeft="16dp"
+            android:layout_toEndOf="@+id/yourAndroidVersionIs"
             android:layout_toLeftOf="@id/yourAndroidVersionIs"
+            android:layout_toRightOf="@+id/yourAndroidVersionIs"
             android:textColor="@color/navdrawer_item_text_color"
             android:textSize="16.0sp"
-            customfontdemo:fontName="Roboto-Light.ttf"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/yourAndroidVersionIs"
-            android:layout_toEndOf="@+id/yourAndroidVersionIs"
-            android:layout_marginLeft="16dp" />
+            customfontdemo:fontName="Roboto-Light.ttf" />
 
     </RelativeLayout>
-
 
 
 </com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView>

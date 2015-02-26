@@ -11,7 +11,22 @@
         <item name="android:colorPrimary">@color/main_app_color</item>
         <item name="android:colorPrimaryDark">@color/main_app_color_dark</item>
         <item name="android:colorAccent">@color/main_app_color</item>
-        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="Theme.TSTB" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:colorPrimary">@color/main_app_color</item>
+        <item name="android:colorPrimaryDark">@color/main_app_color_dark</item>
+        <item name="android:colorAccent">@color/main_app_color</item>
         <item name="android:navigationBarColor">@android:color/black</item>
         <item name="windowActionBar">false</item>
     </style>
@@ -27,7 +42,7 @@
         <item name="android:colorPrimaryDark">@color/md_red_700</item>
         <item name="android:colorAccent">@color/md_red_500</item>
         <item name="android:navigationBarColor">@color/md_red_700</item>
-        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="windowActionBar">false</item>
     </style>
 
@@ -42,7 +57,7 @@
         <item name="android:colorPrimaryDark">@color/green_700</item>
         <item name="android:colorAccent">@color/green_500</item>
         <item name="android:navigationBarColor">@color/green_700</item>
-        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="windowActionBar">false</item>
     </style>
 
@@ -57,7 +72,7 @@
         <item name="android:colorPrimaryDark">@color/about_header_bg_darker</item>
         <item name="android:colorAccent">@color/about_header_bg</item>
         <item name="android:navigationBarColor">@color/about_header_bg_darker</item>
-        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="windowActionBar">false</item>
     </style>
 
@@ -76,12 +91,13 @@
         <item name="windowActionBar">false</item>
     </style>
 
-    <style name="Theme.VersionChecker" parent="android:style/Theme.Material.Light">
+    <style name="Theme.VersionChecker" parent="android:style/Theme.Material">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/material_blue_grey_950</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:elevation">2dp</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:colorPrimary">@color/material_blue_grey_800</item>
         <item name="android:colorPrimaryDark">@color/material_blue_grey_950</item>

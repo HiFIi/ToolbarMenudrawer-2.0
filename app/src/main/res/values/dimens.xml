@@ -2,6 +2,7 @@
     <dimen name="nav_drawer_max_width">304.0dip</dimen>
     <dimen name="list_item_primary_action">24.0dip</dimen>
     <dimen name="about_header_bg_height">150dp</dimen>
+    <dimen name="max_height_drawer_img">180.0dip</dimen>
 
     <!-- Thanks Google. I decompiled some of your apps JUST to make sure I got the right paddings/margins/dimensions -->
     <dimen name="play_drawer_item_left_padding">16.0dip</dimen>

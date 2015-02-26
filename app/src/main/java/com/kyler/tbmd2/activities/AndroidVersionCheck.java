@@ -21,13 +21,27 @@ public class AndroidVersionCheck extends Activity {
 
         androidVersion = (TextView) findViewById(R.id.androidVersion);
         int currentVer = android.os.Build.VERSION.SDK_INT;
-    //    String androidVersionDec = String.valueOf(currentVer);
+        //    String androidVersionDec = String.valueOf(currentVer);
 
         if (currentVer == 21) {
             androidVersion.setText(R.string.android_rel_lollipop);
         } else if (currentVer == 19) {
             androidVersion.setText(R.string.android_rel_kitkat);
-
+            Toast.makeText(this, "Hang tight! I'm working on it.", Toast.LENGTH_LONG).show();
+        } else if (currentVer == 18) {
+            androidVersion.setText(R.string.android_rel_kitkat);
+            Toast.makeText(this, "Hang tight! I'm working on it.", Toast.LENGTH_LONG).show();
+        } else if (currentVer == 17) {
+            androidVersion.setText(R.string.android_rel_kitkat);
+            Toast.makeText(this, "Hang tight! I'm working on it.", Toast.LENGTH_LONG).show();
+        } else if (currentVer == 16) {
+            androidVersion.setText(R.string.android_rel_kitkat);
+            Toast.makeText(this, "Hang tight! I'm working on it.", Toast.LENGTH_LONG).show();
+        } else if (currentVer == 15) {
+            androidVersion.setText(R.string.android_rel_kitkat);
+            Toast.makeText(this, "Hang tight! I'm working on it.", Toast.LENGTH_LONG).show();
+        } else if (currentVer == 14) {
+            androidVersion.setText(R.string.android_rel_kitkat);
             Toast.makeText(this, "Hang tight! I'm working on it.", Toast.LENGTH_LONG).show();
         }
     }

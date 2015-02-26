@@ -62,7 +62,8 @@
             android:name="com.kyler.tstb.TimeSensitiveToolbar"
             android:label="@string/blank_text"
             android:launchMode="singleTask"
-            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"></activity>
+            android:parentActivityName="com.kyler.tbmd2.ToolbarMenudrawer"
+            android:theme="@style/Theme.TSTB"></activity>
         <activity
             android:name="com.kyler.tbmd2.activities.VoiceCommands"
             android:label="@string/blank_text"

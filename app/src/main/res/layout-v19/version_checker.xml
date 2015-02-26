@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:customfontdemo="http://schemas.android.com/tools"
     android:id="@+id/versionCheckerVP"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -18,34 +17,33 @@
             android:id="@+id/yourAndroidVersionIs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_gravity="start|left"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="145dp"
             android:gravity="center|center_vertical|center_horizontal"
             android:text="@string/your_android_version"
             android:textColor="@color/navdrawer_item_text_color"
-            android:textSize="16.0sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="145dp"
-            android:layout_marginLeft="16dp" />
+            android:textSize="16.0sp" />
 
         <TextView
             android:id="@+id/androidVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start|left"
-            android:layout_toLeftOf="@id/yourAndroidVersionIs"
-            android:textColor="@color/navdrawer_item_text_color"
-            android:textSize="16.0sp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/yourAndroidVersionIs"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="start|left"
+            android:layout_marginLeft="16dp"
             android:layout_toEndOf="@+id/yourAndroidVersionIs"
-            android:layout_marginLeft="16dp" />
+            android:layout_toLeftOf="@id/yourAndroidVersionIs"
+            android:layout_toRightOf="@+id/yourAndroidVersionIs"
+            android:textColor="@color/navdrawer_item_text_color"
+            android:textSize="16.0sp" />
 
     </RelativeLayout>
-
 
 
 </com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView>

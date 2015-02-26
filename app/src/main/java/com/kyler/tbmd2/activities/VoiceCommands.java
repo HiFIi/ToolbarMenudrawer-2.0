@@ -82,7 +82,7 @@ public class VoiceCommands extends ToolbarMenudrawer {
                  * word *only* contains "hello", and so if both of those end up being true, we display a Toast
                  * saying "Hi!". Nice and simple, but you get the point. */
 
-             }
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

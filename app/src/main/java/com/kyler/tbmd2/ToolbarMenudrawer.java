@@ -43,7 +43,6 @@ import com.kyler.tbmd2.activities.PaletteActivity;
 import com.kyler.tbmd2.activities.Request;
 import com.kyler.tbmd2.activities.VoiceCommands;
 import com.kyler.tbmd2.activities.WebViewTBMD;
-import com.kyler.tbmd2.utils.BuildUtils;
 import com.kyler.tbmd2.utils.LUtils;
 import com.kyler.tbmd2.utils.RecentTasksStyler;
 import com.kyler.tbmd2.utils.UIUtils;
@@ -159,7 +158,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
                 @Override
                 public void run() {
                     Intent androidVersionCheck = new Intent(ToolbarMenudrawer.this, AndroidVersionCheck.class);
-                    androidVersionCheck.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP & Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    //        androidVersionCheck.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP & Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(androidVersionCheck);
                     finish();
                 }
@@ -173,7 +172,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
 
         }
 
-        if (BuildUtils.isL()) {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP) {
             UIUtils.enableDisableActivitiesByFormFactor(this);
         }
 
@@ -183,11 +182,11 @@ public class ToolbarMenudrawer extends ActionBarActivity {
             ab.setDisplayHomeAsUpEnabled(true);
         }
 
-        if (BuildUtils.isL()) {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP) {
             mHandler = new Handler();
             RecentTasksStyler.styleRecentTasksEntry(this);
-            mThemedStatusBarColor = getResources().getColor(R.color.main_app_color);
-            mNormalStatusBarColor = mThemedStatusBarColor;
+        /*    mThemedStatusBarColor = getResources().getColor(R.color.main_app_color);
+            mNormalStatusBarColor = mThemedStatusBarColor; */
         }
 
     }
@@ -225,7 +224,7 @@ public class ToolbarMenudrawer extends ActionBarActivity {
             return;
         }
 
-        if (BuildUtils.isL()) {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP) {
             mDrawerLayout.setStatusBarBackgroundColor(
                     getResources().getColor(R.color.main_app_color));
         }
@@ -521,9 +520,9 @@ public class ToolbarMenudrawer extends ActionBarActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT == 21) {
-            setupNavDrawer();
-        }
+        //  if (Build.VERSION.SDK_INT == 21) {
+        setupNavDrawer();
+        //  }
 
         View mainContent = findViewById(R.id.main_content);
         if (mainContent != null) {

@@ -97,7 +97,6 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 mToolbar.setBackgroundColor((Integer) animator.getAnimatedValue());
-                getWindow().setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
         });
@@ -252,8 +251,8 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 Window window = getWindow();
-           /*   window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); */
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
@@ -297,8 +296,8 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 Window window = getWindow();
-           /*   window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); */
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
@@ -342,8 +341,8 @@ public class TimeSensitiveToolbar extends ToolbarMenudrawer {
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 Window window = getWindow();
-           /*   window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); */
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 window.setStatusBarColor((Integer) animator.getAnimatedValue());
             }
 
